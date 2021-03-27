@@ -1,0 +1,12 @@
+{
+  "prefix": "prefix",
+  "token": "token",
+  "firebase": {
+    "id": "dbid",
+    "key": "serviceAccountKey.json"
+  },
+  "keys": {
+    "public": "public.der",
+    "private": "private.der"
+  }
+}
