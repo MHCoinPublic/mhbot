@@ -90,7 +90,7 @@ suspend fun main(){
                     field("Сложность", info.network.difficulty.toString(), true)
                     field("Всего монет", info.network.total_emission.toString(), true)
                     field("Количество зарегестрированных пользователей", info.network.users.toString(), true)
-                    thumbnail = EmbedImage("https://cdn.discordapp.com/attachments/824242242151383090/824242258504187934/unknown.png")
+                    thumbnail = EmbedImage("https://mhcoin.s3.filebase.com/avatar.jpg")
                 }
             }
             command("server"){// инфа о сервере
@@ -102,7 +102,7 @@ suspend fun main(){
                     field("Использование CPU", "${info.server.cpu}%", true)
                     field("Использование RAM", "${info.server.ram}%", true)
                     field("Версия сервера", info.server.version.toString(), true)
-                    thumbnail = EmbedImage("https://cdn.discordapp.com/attachments/824242242151383090/824242258504187934/unknown.png")
+                    thumbnail = EmbedImage("https://mhcoin.s3.filebase.com/avatar.jpg")
                 }
             }
             command("reg"){// регистрация
@@ -133,7 +133,7 @@ suspend fun main(){
                 }
             }
             command("help"){// это хелп
-                val avatar = "https://discordapp.com/assets/322c936a8c8be1b803cd94861bdfa868.png"
+                val avatar = "https://mhcoin.s3.filebase.com/avatar.jpg"
                 if(this.words.size == 1){
                     reply("напиши .help 1 или .help 2")
                 }
@@ -166,7 +166,7 @@ suspend fun main(){
                 val jsonRich = rest().checkRich()
                 val jsonObject = gson.fromJson(jsonRich, rich::class.java)
 
-                val avatar = "https://discordapp.com/assets/322c936a8c8be1b803cd94861bdfa868.png"
+                val avatar = "https://mhcoin.s3.filebase.com/avatar.jpg"
                 reply{
                     color = 0x808080
                     thumbnail = EmbedImage(avatar)
@@ -182,7 +182,7 @@ suspend fun main(){
                 val password = Main().base64Decrypt(jsonObject.password).toString()
 
                 val login = gson.fromJson(rest().checkLogin(user, password), login::class.java)
-                val avatar = "https://discordapp.com/assets/322c936a8c8be1b803cd94861bdfa868.png"
+                val avatar = "https://mhcoin.s3.filebase.com/avatar.jpg"
                 if(login.status == "ok"){
                     reply("Залогинился")
                     val transferJson = rest().transfer(login.token, this.words[1], this.words[2])
