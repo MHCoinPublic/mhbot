@@ -1,0 +1,30 @@
+name: Билд mhbot
+
+on: [ pull_request ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Сетапим джаву
+      uses: actions/setup-java@v1.4.3
+      with:
+        java-version: 15
+
+    - name: Даю права на запуск градлу
+      run: chmod +x gradlew
+
+    # Билдим
+    - name: Билд с градлом
+      run: "./gradlew shadowJar"
+
+    # Кидаю артифакты в GitHub
+    - uses: actions/upload-artifact@v2
+      name: "Загружаю mhbot"
+      with:
+        name: mhbot
+        path: build/libs/mhcoin-*-all.jar
+# Пулл (pull request) - сравнение ветки в личном репозитории с кодом основного. Так мы увидим изменения, которые вы сделали
